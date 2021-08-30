@@ -1,25 +1,20 @@
 FROM ubuntu:20.04
 
-RUN apt-get update && apt-get install --no-install-recommends -y \
-  ca-certificates \
-  wget \
-  && rm -rf /var/lib/apt/lists/*
+# RUN apt-get update && apt-get install --no-install-recommends -y \
+#   ca-certificates \
+#   wget \
+#   && rm -rf /var/lib/apt/lists/*
 
+EXPOSE 22556
 WORKDIR /wowmuchdocker
+ARG VERSION="1.14.4"
   
-RUN wget https://github.com/dogecoin/dogecoin/releases/download/v1.14.3/dogecoin-1.14.3-x86_64-linux-gnu.tar.gz && \
-    wget https://github.com/dogecoin/dogecoin/releases/download/v1.14.3/dogecoin-1.14.3-aarch64-linux-gnu.tar.gz && \
-    mkdir x86_64 && \
-    mkdir aarch64 && \
-    tar -xvzf ./dogecoin-1.14.3-x86_64-linux-gnu.tar.gz -C ./x86_64 && \
-    tar -xvzf ./dogecoin-1.14.3-aarch64-linux-gnu.tar.gz -C ./aarch64 && \
-    rm ./dogecoin-1.14.3-x86_64-linux-gnu.tar.gz && \
-    rm ./dogecoin-1.14.3-aarch64-linux-gnu.tar.gz && \
-    cd ./x86_64/dogecoin-1.14.3 && \
-    mkdir data && \
-    cd ../.. && \
-    cd ./aarch64/dogecoin-1.14.3 && \
+RUN wget https://github.com/dogecoin/dogecoin/releases/download/v${VERSION}/dogecoin-${VERSION}-x86_64-linux-gnu.tar.gz && \
+    tar -xvzf ./dogecoin-${VERSION}-x86_64-linux-gnu.tar.gz -C && \
+    rm ./dogecoin-${VERSION}-x86_64-linux-gnu.tar.gz && \
+	mv ./dogecoin-$(VERSION) ./dogecoin-node
+    cd ./dogecoin-node && \
     mkdir data && \
     cd ../..
 
-CMD ["/wowmuchdocker/${ARCH}/dogecoin-1.14.3/bin/dogecoind", "-conf=/etc/dogecoin.conf", "-printtoconsole"]
+CMD ["/wowmuchdocker/dogecoin-node/bin/dogecoind", "-conf=/etc/dogecoin.conf", "-datadir=/etc/doge-data", "-printtoconsole"]
