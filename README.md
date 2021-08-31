@@ -4,4 +4,4 @@
   Requirements:
   - Port 22556 added to the container and forwarded by your router. (uPnP is untested but may be a possible alternative to port forwarding. See dogecoin.conf)
   - Container path /etc/doge/ mapped to host where blockchain data will be stored.
-  - In the same path dogecoin.conf file should be created. See this repository for template.
+  - In the same path dogecoin.conf file should be created alongside a folder named 'data'. See this repository for template.
