@@ -1,9 +1,8 @@
-FROM ubuntu:20.04
+FROM alpine:latest
 
- RUN apt-get update && apt-get install --no-install-recommends -y \
-   ca-certificates \
-   wget \
-   && rm -rf /var/lib/apt/lists/*
+ RUN apk --no-cache add ca-certificates bash wget  && \
+     apk --no-cache add --update alpine-sdk build-base && \
+     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /wowmuchdocker
 EXPOSE 22556
