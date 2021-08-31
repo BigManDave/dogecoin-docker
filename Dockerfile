@@ -17,4 +17,4 @@ RUN wget https://github.com/dogecoin/dogecoin/releases/download/v${VERSION}/doge
     mkdir data && \
     cd ../..
 
-CMD ["/wowmuchdocker/dogecoin-node/bin/dogecoind", "-conf=/etc/doge/dogecoin.conf", "-datadir=/etc/doge/data", "-printtoconsole"]
+CMD ["/wowmuchdocker/dogecoin-node/bin/dogecoind", "-conf=/etc/doge/dogecoin.conf", "-datadir=/etc/doge", "-printtoconsole"]
