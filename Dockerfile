@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:24.04
 
  RUN apt-get update && apt-get install --no-install-recommends -y \
    ca-certificates \
@@ -7,7 +7,7 @@ FROM ubuntu:20.04
 
 WORKDIR /wowmuchdocker
 EXPOSE 22556
-ARG VERSION="1.14.6"
+ARG VERSION="1.14.7"
   
 RUN wget https://github.com/dogecoin/dogecoin/releases/download/v${VERSION}/dogecoin-${VERSION}-x86_64-linux-gnu.tar.gz && \
     tar -xvzf ./dogecoin-${VERSION}-x86_64-linux-gnu.tar.gz && \
