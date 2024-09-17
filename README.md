@@ -1,7 +1,6 @@
 17.09.2024
--Update Node Version
--Update dogecoin.conf
----
+ Update Node Version
+ Update dogecoin.conf
 
 
 # DogecoinD Docker Image
