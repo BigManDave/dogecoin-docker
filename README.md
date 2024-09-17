@@ -1,3 +1,9 @@
+17.09.2024
+-Update Node Version
+-Update dogecoin.conf
+---
+
+
 # DogecoinD Docker Image
   This is an x86 Docker image for running a DogecoinD 1.14.8 FullNode based on Ubuntu.
 
